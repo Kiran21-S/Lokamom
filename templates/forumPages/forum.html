@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="sm:grid sm:grid-flow-col grid-cols-1 gap-7 px-40">
+        <div class="col-span-2">
+            {% if user.is_authenticated %}
+                <div class="flex flex-row justify-between items-center px-5 m-3 text-sky-300">
+                    <p class="text-lg ">Hello {{ user.username }}</p>
+                    <a href="{% url 'ask_question' %}">+New Post</a>
+                </div>
+            {% endif %}
+            {% for question in object_list %}
+                <div class="flex flex-col sm:w-72 md:w-full h-22 bg-[#87CEEB] border rounded-lg pt-2 pb-2 px-4 mb-5">
+                    <h6 class="text-blue-900 ">{{ question.questioner }}</h6>
+                    <h2 class="text-[#008080] text-left">
+                        <a href="{% url "question_detail" question.pk %}">{{ question.quest}}</a>
+                    </h2>
+                    <a class="self-end text-blue-900 href="{% url "question_detail" question.pk  %}">Reply</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
