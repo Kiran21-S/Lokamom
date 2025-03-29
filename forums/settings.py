@@ -42,8 +42,12 @@ INSTALLED_APPS = [
     'questAns',
     'django_browser_reload',
     'users',
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
 TAILWIND_APP_NAME = 'theme'
 
 MIDDLEWARE = [
@@ -58,7 +62,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'forums.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -76,6 +79,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'forums.wsgi.application'
+
+
 
 
 # Database
@@ -125,6 +130,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -1,6 +1,20 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>ask question</h1>
+    <form action="" method="POST" id="ask-question-form">
+        {% csrf_token %}
+        <h1 class="text-white text-2xl">Write a new post...</h1>
+        <Textarea placeholder="Type here..." name="quest" class="w-full mt-3"></Textarea>
+        <button type="submit" class="bg-green-400 p-2 font-bold rounded-lg mt-3">Submit</button>
+    </form>
+    <script>
+        document.cookie = "user_timezone=" + Intl.DateTimeFormat().resolvedOptions().timeZone + ";path=/";
+        document.getElementById("ask-question-form").addEventListener("submit", function () {
+            setTimeout(() => {
+                window.location.href = "{% url 'forums' %}";
+            }, 100);
+        })
+    </script>
 {% endblock %}
+
 

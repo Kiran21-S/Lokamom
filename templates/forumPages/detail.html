@@ -1,13 +1,29 @@
 {% extends 'layout.html' %}
-
 {% block content %}
 <div class="flex flex-col w-3/4 place-self-center">
     <p class="text-sky-900  bg-gray-200 px-3 w-max rounded-lg rounded-b-none font-bold"> {{ question.questioner }}</p>
     <h2 class="text-[#008080] bg-gray-200 p-3 rounded-lg rounded-tl-none">{{ question.quest }}</h2>
-    <h2 class="text-white my-4 font-bold">Answers: </h2>
-    <div class="flex flex-col gap-5">
-        <textarea placeholder="Type here ..." class="w-full" name="" id=""></textarea>
+    <h2 class="text-white my-4 font-bold">Replies: </h2>
+    {% for reply in question.replys.all %}
+            <div class="">
+                <h1 class="bg-slate-200 text-sky-900 px-3 w-max rounded-lg rounded-b-none font-bold">{{ reply.answerer}}</h1>
+                <h1 class="text-[#008080] bg-slate-200 p-2 ">{{ reply }}</h1>
+                <h6 class="text-xs  bg-slate-200 text-gray-500 mb-2 py-1 px-2">{{ reply.time }}|{{ reply.date }}</h6>
+            </div>
+    {% endfor %}
+    <form  method="POST" id="replyform">
+        {% csrf_token %}
+        <textarea placeholder="Type here ..." class="w-full" name="reply" id=""></textarea>
         <button class="bg-green-400 w-28 rounded-lg text-white">Send</button>
-    </div>
+    </form>
 </div>
+<script>
+    document.cookie = "user_timezone=" + Intl.DateTimeFormat().resolvedOptions().timeZone + ";path=/";
+    document.getElementById("replyform").addEventListener("submit", function () {
+        setTimeout(() => {
+            history.replaceState(null, "", location.href);
+        }, 100);
+    })
+</script>    
+
 {% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div>
+        <div class="flex bg-slate-300 p-10 items-center gap-5">
+            <img src="{{ user.profile.image.url }}" alt="" class="w-40 h-40 rounded-full">
+            <div>
+                <h2 class="text-3xl">{{ user.username }}</h2>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

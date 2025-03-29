@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% for question in object_list %}
+        {% if user == question.questioner %}
+        <a href="{% url "question_detail" question.pk %}">
+            <div class="m-2 grid grid-flow-col grid-cols-12 items-center gap-5">
+                <div class="col-span-2">
+                    <p class="text-white">{{ question.date }}</p>
+                    <p class="text-white">{{ question.time }}</p>
+                </div>
+                <div class="bg-slate-200 p-3 w-md text-wrap rounded-lg col-span-8">{{ question.quest}}</div>
+                <div class="col-span-2"><button class="bg-red-500 h-10 w-10 rounded-full font-extrabold">🗑️</button></div>
+            </div>
+        </a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
