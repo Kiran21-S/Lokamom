@@ -74,5 +74,4 @@ class YourPostsView(ListView):
         return Question.objects.all().order_by('-id')
 
 
-def showProfile(request):
-    return render(request,"profilePages/yourProfile.html")
+

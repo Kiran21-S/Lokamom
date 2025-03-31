@@ -1,12 +1,33 @@
 {% extends 'layout.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
     <div>
-        <div class="flex bg-slate-300 p-10 items-center gap-5">
+        <div class="flex bg-slate-300 p-10 items-center gap-5 rounded-xl">
             <img src="{{ user.profile.image.url }}" alt="" class="w-40 h-40 rounded-full">
             <div>
                 <h2 class="text-3xl">{{ user.username }}</h2>
                 <p>{{ user.email }}</p>
             </div>
         </div>
+        <form method="POST" enctype="multipart/form-data" class="bg-slate-300 mt-10 p-5 rounded-xl">
+            {% csrf_token %}
+            <h1 class="text-3xl text-slate-800 font-bold my-5">Update Information</h1>
+            <div class="mb-4">
+                <label for="{{ u_form.username.id_for_label }}" class="block font-medium text-gray-700">Username</label>
+                {{ u_form.username }}
+            </div>
+            <div class="mb-4">
+                <label for="{{ u_form.email.id_for_label }}" class="block font-medium text-gray-700">Email</label>
+                {{ u_form.email }}
+            </div>
+            <div class="mb-4 text-white">
+                <label for="{{ p_form.image.id_for_label }}" class="block font-medium text-gray-700">Profile Image</label>
+                {{ p_form.image }}
+            </div>
+        
+            <button type="submit" class="text-white font-bold bg-sky-400 w-20 rounded-lg py-2">
+                Update
+            </button>
+        </form>
     </div>
 {% endblock content %}

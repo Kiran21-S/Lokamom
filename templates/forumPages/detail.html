@@ -11,17 +11,21 @@
                 <h6 class="text-xs  bg-slate-200 text-gray-500 mb-2 py-1 px-2">{{ reply.time }}|{{ reply.date }}</h6>
             </div>
     {% endfor %}
-    <form  method="POST" id="replyform">
+    <form  method="POST" id="replyform" class="mb-20">
         {% csrf_token %}
         <textarea placeholder="Type here ..." class="w-full" name="reply" id=""></textarea>
-        <button class="bg-green-400 w-28 rounded-lg text-white">Send</button>
+        <div class="flex items-center justify-between mt-3">
+            <button class="bg-green-400 w-28 rounded-lg text-white font-bold">Send</button>
+            <a href="{% url 'forums' %}" class="bg-red-600 py-0.5 px-6 rounded-lg font-bold text-white">Close</a>
+        </div>
     </form>
+    
 </div>
 <script>
     document.cookie = "user_timezone=" + Intl.DateTimeFormat().resolvedOptions().timeZone + ";path=/";
-    document.getElementById("replyform").addEventListener("submit", function () {
+    document.getElementById("ask-question-form").addEventListener("submit", function () {
         setTimeout(() => {
-            history.replaceState(null, "", location.href);
+            window.location.href = "{% url 'forums' %}";
         }, 100);
     })
 </script>    
