@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404 # type: ignore
-from django.views.generic import ListView, DetailView, CreateView # type: ignore
+from django.views.generic import ListView, DetailView, CreateView, DeleteView # type: ignore
 from .models import Question, Reply
 from django.contrib.auth.decorators import login_required # type: ignore
 from django.http import HttpResponseRedirect # type: ignore
 from django.utils import timezone # type: ignore
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # type: ignore
+from django.contrib import messages # type: ignore
+from django.urls import reverse_lazy # type: ignore
 # Create your views here.
 
 class QuestListView(ListView):
@@ -73,5 +75,7 @@ class YourPostsView(ListView):
     def get_queryset(self):
         return Question.objects.all().order_by('-id')
 
-
-
+class QuestDeleteView(DeleteView):
+    model = Question
+    template_name = 'profilePages/deletePosts.html'  # Create this template
+    success_url = reverse_lazy('yourPosts')

@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect # type: ignore
+from django.shortcuts import render, redirect, get_object_or_404 # type: ignore
 from django.contrib.auth import authenticate, login, logout # type: ignore
 from django.contrib import messages # type: ignore
 from django.contrib.auth.forms import UserCreationForm # type: ignore
 from .forms import RegisterUserForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required  # type: ignore
+
 # Create your views here.
 
 def loginUser(request):
@@ -61,3 +62,4 @@ def showProfile(request):
         'p_form': p_form  
         }
     return render(request,"profilePages/yourProfile.html", context)
+

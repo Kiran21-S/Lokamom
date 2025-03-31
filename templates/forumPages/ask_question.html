@@ -5,7 +5,10 @@
         {% csrf_token %}
         <h1 class="text-white text-2xl">Write a new post...</h1>
         <Textarea placeholder="Type here..." name="quest" class="w-full mt-3"></Textarea>
-        <button type="submit" class="bg-green-400 p-2 font-bold rounded-lg mt-3">Submit</button>
+        <div class="flex gap-5 mt-3">
+            <button type="submit" class="bg-green-400 p-2 font-bold rounded-lg ">Submit</button>
+            <a href="{% url 'forums' %}" class="bg-red-600 w-20 py-2 text-center rounded-lg text-white">Cancel</a>
+        </div>
     </form>
     <script>
         document.cookie = "user_timezone=" + Intl.DateTimeFormat().resolvedOptions().timeZone + ";path=/";

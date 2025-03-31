@@ -1,17 +1,27 @@
 {% extends 'layout.html' %}
+{% load static %}
 {% block content %}
-    {% for question in object_list %}
-        {% if user == question.questioner %}
-        <a href="{% url "question_detail" question.pk %}">
-            <div class="m-2 grid grid-flow-col grid-cols-12 items-center gap-5">
-                <div class="col-span-2">
-                    <p class="text-white">{{ question.date }}</p>
-                    <p class="text-white">{{ question.time }}</p>
+    <div id="container">
+        {% for question in object_list %}
+            {% if user == question.questioner %}
+                <div class="grid grid-flow-col grid-cols-12 items-center gap-5 self-center mx-10 mb-7">
+                    <a href="{% url "question_detail" question.pk %}" class="col-span-10">
+                        <div class="bg-slate-200 p-3 w-md text-wrap rounded-lg ">
+                            {{ question.quest}}
+                            <div class="">
+                                <p class="text-gray-500">{{ question.time }} {{ question.date }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="col-span-2"><a href="{% url "delete_post" question.pk %}"><img src="{% static 'trash.png' %}" alt="delete" class="w-10 h-10"></a></div>
                 </div>
-                <div class="bg-slate-200 p-3 w-md text-wrap rounded-lg col-span-8">{{ question.quest}}</div>
-                <div class="col-span-2"><button class="bg-red-500 h-10 w-10 rounded-full font-extrabold">🗑️</button></div>
-            </div>
-        </a>
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+<script>
+    const container = document.getElementById('container')
+    if (container.textContent.trim()===""){
+        container.textContent = "<center><h1 class="text-white text-3xl">No posts yet</h1></center>"
+    }
+</script>
 {% endblock %}

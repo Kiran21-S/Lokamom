@@ -25,9 +25,12 @@
                 {{ p_form.image }}
             </div>
         
-            <button type="submit" class="text-white font-bold bg-sky-400 w-20 rounded-lg py-2">
-                Update
-            </button>
+            <div class="flex justify-between">
+                <button type="submit" class="text-white font-bold bg-sky-400 w-20 rounded-lg py-2">
+                    Update
+                </button>
+                <a href="{% url 'forums' %}" class="bg-red-600 w-20 py-2.5 px-5 rounded-lg font-bold text-white">Close</a>
+            </div>
         </form>
     </div>
 {% endblock content %}
