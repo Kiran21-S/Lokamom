@@ -2,34 +2,34 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div>
-        <div class="flex bg-slate-300 p-10 items-center gap-5 rounded-xl">
+        <div class="flex p-10 items-center gap-5 rounded-xl">
             <img src="{{ user.profile.image.url }}" alt="" class="w-40 h-40 rounded-full">
             <div>
                 <h2 class="text-3xl">{{ user.username }}</h2>
                 <p>{{ user.email }}</p>
             </div>
         </div>
-        <form method="POST" enctype="multipart/form-data" class="bg-slate-300 mt-10 p-5 rounded-xl">
+        <form method="POST" enctype="multipart/form-data" class="mt-10 p-5 rounded-xl">
             {% csrf_token %}
-            <h1 class="text-3xl text-slate-800 font-bold my-5">Update Information</h1>
+            <h1 class="text-3xl font-bold my-5">Update Information</h1>
             <div class="mb-4">
-                <label for="{{ u_form.username.id_for_label }}" class="block font-medium text-gray-700">Username</label>
+                <label for="{{ u_form.username.id_for_label }}" class="block font-medium">Username</label>
                 {{ u_form.username }}
             </div>
             <div class="mb-4">
-                <label for="{{ u_form.email.id_for_label }}" class="block font-medium text-gray-700">Email</label>
+                <label for="{{ u_form.email.id_for_label }}" class="block font-medium">Email</label>
                 {{ u_form.email }}
             </div>
-            <div class="mb-4 text-white">
-                <label for="{{ p_form.image.id_for_label }}" class="block font-medium text-gray-700">Profile Image</label>
+            <div class="mb-4 ">
+                <label for="{{ p_form.image.id_for_label }}" class="block font-medium ">Profile Image</label>
                 {{ p_form.image }}
             </div>
         
             <div class="flex justify-between">
-                <button type="submit" class="text-white font-bold bg-sky-400 w-20 rounded-lg py-2">
+                <button type="submit" class="font-bold  w-20 rounded-lg py-2">
                     Update
                 </button>
-                <a href="{% url 'forums' %}" class="bg-red-600 w-20 py-2.5 px-5 rounded-lg font-bold text-white">Close</a>
+                <a href="{% url 'forums' %}" class="w-20 py-2.5 px-5 rounded-lg font-bold">Close</a>
             </div>
         </form>
     </div>

@@ -6,10 +6,10 @@
             {% if user == question.questioner %}
                 <div class="grid grid-flow-col grid-cols-12 items-center gap-5 self-center mx-10 mb-7">
                     <a href="{% url "question_detail" question.pk %}" class="col-span-10">
-                        <div class="bg-slate-200 p-3 w-md text-wrap rounded-lg ">
+                        <div class="p-3 w-md text-wrap rounded-lg ">
                             {{ question.quest}}
                             <div class="">
-                                <p class="text-gray-500">{{ question.time }} {{ question.date }}</p>
+                                <p class="">{{ question.time }} {{ question.date }}</p>
                             </div>
                         </div>
                     </a>

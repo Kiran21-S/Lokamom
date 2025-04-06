@@ -1,22 +1,22 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="flex flex-col w-3/4 place-self-center">
-    <p class="text-sky-900  bg-gray-200 px-3 w-max rounded-lg rounded-b-none font-bold"> {{ question.questioner }}</p>
-    <h2 class="text-[#008080] bg-gray-200 p-3 rounded-lg rounded-tl-none">{{ question.quest }}</h2>
-    <h2 class="text-white my-4 font-bold">Replies: </h2>
+    <p class="px-3 w-max rounded-lg rounded-b-none font-bold"> {{ question.questioner }}</p>
+    <h2 class="p-3 rounded-lg rounded-tl-none">{{ question.quest }}</h2>
+    <h2 class="my-4 font-bold">Replies: </h2>
     {% for reply in question.replys.all %}
             <div class="">
-                <h1 class="bg-slate-200 text-sky-900 px-3 w-max rounded-lg rounded-b-none font-bold">{{ reply.answerer}}</h1>
-                <h1 class="text-[#008080] bg-slate-200 p-2 ">{{ reply }}</h1>
-                <h6 class="text-xs  bg-slate-200 text-gray-500 mb-2 py-1 px-2">{{ reply.time }}|{{ reply.date }}</h6>
+                <h1 class="px-3 w-max rounded-lg rounded-b-none font-bold">{{ reply.answerer}}</h1>
+                <h1 class=" p-2 ">{{ reply }}</h1>
+                <h6 class="text-xs mb-2 py-1 px-2">{{ reply.time }}|{{ reply.date }}</h6>
             </div>
     {% endfor %}
     <form  method="POST" id="replyform" class="mb-20">
         {% csrf_token %}
         <textarea placeholder="Type here ..." class="w-full" name="reply" id=""></textarea>
         <div class="flex items-center justify-between mt-3">
-            <button class="bg-green-400 w-28 rounded-lg text-white font-bold">Send</button>
-            <a href="{% url 'forums' %}" class="bg-red-600 py-0.5 px-6 rounded-lg font-bold text-white">Close</a>
+            <button class=" w-28 rounded-lg font-bold">Send</button>
+            <a href="{% url 'forums' %}" class="py-0.5 px-6 rounded-lg font-bold ">Close</a>
         </div>
     </form>
     

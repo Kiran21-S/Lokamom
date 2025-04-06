@@ -2,7 +2,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% if form.errors %}
-<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+<div class="border  px-4 py-3 rounded relative" role="alert">
     <span class="block sm:inline">There was an error registering you</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
     </span>
@@ -13,10 +13,10 @@
     <form action="{% url "register" %}" method="post">
         {% csrf_token %}
         <center>
-            <div class="bg-blue-950 w-max h-auto p-5 text-teal-600 shadow-blue-950 shadow-lg rounded-lg opacity-100 flex flex-col text-left justify-center gap-5 ">
-                <h1 class="text-white text-2xl font-bold">Create account</h1>
+            <div class="w-max h-auto p-5 shadow-lg rounded-lg opacity-100 flex flex-col text-left justify-center gap-5 ">
+                <h1 class="text-2xl font-bold">Create account</h1>
                 {% crispy form %}
-                <input type="submit" value="Submit" class="text-white font-bold bg-sky-400 w-20 rounded-lg">
+                <input type="submit" value="Submit" class="font-bold  w-20 rounded-lg">
             </div>
         </center>
     </form>

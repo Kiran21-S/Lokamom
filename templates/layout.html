@@ -8,9 +8,9 @@
     <title>Lokamom</title>
     {% tailwind_css %}
 </head>
-<body class="bg-gray-900 flex justify-center font-mono items-center">
-    <div class = "bg-gray-900 md:w-2/3 w-full h-svh p-5">
-        <nav class="h-10 flex items-center justify-between px-5 text-sky-400 ">
+<body class=" flex justify-center font-mono items-center">
+    <div class = " md:w-2/3 w-full h-svh p-5">
+        <nav class="h-10 flex items-center justify-between px-5 ">
             <a class="justify-start text-3xl" href="{% url 'forums' %}"><strong>FORUMS</strong></a>
                 {% if user.is_authenticated %}
                 <div>
@@ -32,7 +32,7 @@
         <div class="p-5">
             {% if messages %}
                 {% for m in messages %}
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <div class=" border px-4 py-3 rounded relative" role="alert">
                         {% comment %} <strong class="font-bold">Holy smokes!</strong> {% endcomment %}
                         <span class="block sm:inline">{{ m }}</span>
                         <span class="absolute top-0 bottom-0 right-0 px-4 py-3">

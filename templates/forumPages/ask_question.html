@@ -3,11 +3,11 @@
 {% block content %}
     <form action="" method="POST" id="ask-question-form">
         {% csrf_token %}
-        <h1 class="text-white text-2xl">Write a new post...</h1>
+        <h1 class="text-2xl">Write a new post...</h1>
         <Textarea placeholder="Type here..." name="quest" class="w-full mt-3"></Textarea>
         <div class="flex gap-5 mt-3">
-            <button type="submit" class="bg-green-400 p-2 font-bold rounded-lg ">Submit</button>
-            <a href="{% url 'forums' %}" class="bg-red-600 w-20 py-2 text-center rounded-lg text-white">Cancel</a>
+            <button type="submit" class="p-2 font-bold rounded-lg ">Submit</button>
+            <a href="{% url 'forums' %}" class="w-20 py-2 text-center rounded-lg text-white">Cancel</a>
         </div>
     </form>
     <script>
